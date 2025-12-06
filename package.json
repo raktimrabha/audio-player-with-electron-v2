@@ -1,6 +1,6 @@
 {
   "name": "simple-audio-player-with-electron",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple audio player built with Electron",
   "main": "index.js",
   "scripts": {
