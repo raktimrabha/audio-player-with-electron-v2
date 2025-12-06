@@ -16,7 +16,11 @@
     "type": "git",
     "url": "git+https://github.com/raktimrabha/Simple-Audio-Player-with-Electron.git"
   },
-  "keywords": ["electron", "audio", "player"],
+  "keywords": [
+    "electron",
+    "audio",
+    "player"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -25,26 +29,27 @@
   },
   "homepage": "https://github.com/raktimrabha/Simple-Audio-Player-with-Electron#readme",
   "build": {
-    "appId": "com.example.simpleaudioplayer",
-    "productName": "Simple Audio Player",
-    "directories": {
-      "output": "dist"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "build/icon.ico"
-    },
-    "linux": {
-      "target": ["AppImage", "deb"],
-      "category": "Audio",
-      "icon": "build/icon.png"
-    },
-    "files": [
-      "**/*",
-      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__}",
-      "!**/node_modules/.bin"
-    ]
+  "appId": "com.example.simpleaudioplayer",
+  "productName": "Simple Audio Player",
+  "directories": {
+    "output": "dist"
   },
+  "win": {
+    "target": "nsis",
+    "icon": "build/icon.ico",
+    "verifyUpdateCodeSignature": false
+  },
+  "linux": {
+    "target": ["AppImage", "deb"],
+    "category": "Audio",
+    "icon": "build/icon.png"
+  },
+  "files": [
+    "**/*",
+    "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__}",
+    "!**/node_modules/.bin"
+  ]
+},
   "devDependencies": {
     "autoprefixer": "^10.4.22",
     "concurrently": "^9.2.1",
