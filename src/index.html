@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electron Audio Player</title>
+    <link href="../dist/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            outline: none;
+        }
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            transition: background 0.15s ease-in-out;
+        }
+        .progress-bar::-webkit-slider-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-white">
+            <h1 class="text-2xl font-bold">Electron Audio Player</h1>
+            <p class="text-blue-100 text-sm mt-1">Play your favorite music</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-6">
+            <!-- Now Playing -->
+            <div class="text-center mb-8">
+                <div class="w-40 h-40 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center text-gray-300 shadow-inner">
+                    <i class="fas fa-music text-5xl"></i>
+                </div>
+                <h2 id="nowPlaying" class="text-xl font-semibold text-gray-800">No file selected</h2>
+                <p id="fileInfo" class="text-gray-500 text-sm mt-1">Open an audio file to begin</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mb-4">
+                <div class="flex justify-between text-xs text-gray-500 mb-1">
+                    <span id="currentTime">00:00</span>
+                    <span id="duration">00:00</span>
+                </div>
+                <input type="range" id="progress" class="w-full h-2 cursor-pointer progress-bar" value="0">
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center justify-center space-x-6 mt-8">
+                <button id="openFile" class="p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" aria-label="Open file">
+                    <i class="fas fa-folder-open text-lg"></i>
+                </button>
+                <button id="playPause" disabled class="p-4 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" aria-label="Play/Pause">
+                    <i class="fas fa-play text-xl"></i>
+                </button>
+                <button id="stopBtn" class="p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" aria-label="Stop">
+                    <i class="fas fa-stop text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="mt-8 flex items-center space-x-3">
+                <i class="fas fa-volume-up text-gray-500 w-5"></i>
+                <input type="range" id="volume" class="w-full h-1.5 rounded-full cursor-pointer" min="0" max="1" step="0.01" value="1">
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/app.js"></script>
+</body>
+</html>

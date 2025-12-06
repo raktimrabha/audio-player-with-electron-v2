@@ -1,0 +1,56 @@
+{
+  "name": "simple-audio-player-with-electron",
+  "version": "1.0.0",
+  "description": "A simple audio player built with Electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run build:css\" \"electron .\"",
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "pack": "npm run build:css && electron-builder --dir",
+    "dist": "npm run build:css && electron-builder",
+    "dist:win": "npm run build:css && electron-builder --win",
+    "dist:linux": "npm run build:css && electron-builder --linux",
+    "release": "npm run build:css && electron-builder --publish always"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raktimrabha/Simple-Audio-Player-with-Electron.git"
+  },
+  "keywords": ["electron", "audio", "player"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raktimrabha/Simple-Audio-Player-with-Electron/issues"
+  },
+  "homepage": "https://github.com/raktimrabha/Simple-Audio-Player-with-Electron#readme",
+  "build": {
+    "appId": "com.example.simpleaudioplayer",
+    "productName": "Simple Audio Player",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Audio",
+      "icon": "build/icon.png"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__}",
+      "!**/node_modules/.bin"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.6",
+    "electron-builder": "^26.0.12",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1"
+  }
+}
