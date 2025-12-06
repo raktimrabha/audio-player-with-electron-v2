@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build and Release
-    runs-on: windows-latest  # Only build on Windows for .exe
+    runs-on: windows-latest
 
     steps:
       - name: Check out Git repository
@@ -26,18 +26,19 @@ jobs:
         run: npm run build:css
 
       - name: Build Windows executable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm run dist:win
-          # Debug: List all files in dist directory
-          dir dist /s /b
+          # List all files for debugging
+          Get-ChildItem -Path dist -Recurse -File | Select-Object FullName
 
       - name: Upload Release Assets
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            dist/*.exe
-            dist/*.exe.blockmap
-            dist/latest.yml
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./dist/*.exe
+          asset_name: Simple-Audio-Player-Setup.exe
+          asset_content_type: application/octet-stream

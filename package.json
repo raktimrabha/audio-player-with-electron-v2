@@ -28,9 +28,12 @@
     "url": "https://github.com/raktimrabha/Simple-Audio-Player-with-Electron/issues"
   },
   "homepage": "https://github.com/raktimrabha/Simple-Audio-Player-with-Electron#readme",
+  
   "build": {
   "appId": "com.example.simpleaudioplayer",
   "productName": "Simple Audio Player",
+  "owner": "raktimrabha",
+  "repo": "Simple-Audio-Player-with-Electron",
   "directories": {
     "output": "dist"
   },
